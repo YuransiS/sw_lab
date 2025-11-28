@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SW.LAB - Мастер Окон</title>
+    <meta name="description" content="Освойте профессию мастера окон за 30 дней и зарабатывайте от 3000€ в Европе">
+    <meta name="theme-color" content="#B91C1C">
+    
+    <!-- Шрифты -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS (Стили) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#B91C1C', // Глубокий красный
+                        secondary: '#1F2937', // Темно-серый
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Иконки -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- ========================================== -->
+    <!-- 🔥 ЗОНА ДЛЯ ТАРГЕТОЛОГА (ЧАСТЬ 1: SCRIPT) 🔥 -->
+    <!-- Оставляем в HEAD -->
+    <!-- ========================================== -->
+    <script>
+        // Вставь ID пикселя ниже вместо нулей
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        
+        fbq('init', '0000000000000000'); // <--- ID ПИКСЕЛЯ СЮДА
+        fbq('track', 'PageView');
+    </script>
+    <!-- ========================================== -->
+
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 antialiased selection:bg-red-100 selection:text-red-900">
+
+    <!-- ========================================== -->
+    <!-- 🔥 ЗОНА ДЛЯ ТАРГЕТОЛОГА (ЧАСТЬ 2: NOSCRIPT) 🔥 -->
+    <!-- Перенесли в начало BODY, чтобы Vercel не ругался -->
+    <!-- ========================================== -->
+    <noscript><img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=0000000000000000&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- ========================================== -->
+
+    <!-- Header -->
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 bg-white py-4 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <span class="font-extrabold text-2xl tracking-tighter text-secondary">
+                    SW<span class="text-primary">.</span>LAB
+                </span>
+            </div>
+            
+            <button onclick="handleRedirect('Header_Top')" class="group flex items-center gap-2 text-sm font-semibold text-secondary hover:text-primary transition-colors border-2 border-gray-200 hover:border-primary rounded-full px-4 py-2 cursor-pointer">
+                <i data-lucide="play" class="w-4 h-4 fill-current"></i>
+                <span class="hidden sm:inline">Смотреть видео</span>
+                <span class="sm:hidden">Видео</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Отступ для хедера -->
+    <div class="h-20"></div>
+
+    <!-- Hero Section -->
+    <section id="hero" class="py-8 md:py-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+            <!-- Текст -->
+            <div class="flex flex-col space-y-6">
+                
+                <!-- Заголовок (Всегда сверху на мобильном) -->
+                <h1 class="order-1 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-secondary">
+                    С нуля до мастера окон за 30 дней: как зарабатывать от <span class="text-primary whitespace-nowrap">3000€ в Европе?</span>
+                </h1>
+
+                <!-- Картинка для МОБИЛЬНЫХ (Order 2) - Прямая ссылка -->
+                <div class="order-2 md:hidden rounded-2xl overflow-hidden shadow-lg aspect-video relative">
+                    <img src="https://images.pexels.com/photos/5691503/pexels-photo-5691503.jpeg" 
+                         alt="Мастер ремонтирует белое окно" 
+                         class="w-full h-full object-cover">
+                </div>
+
+                <!-- Подзаголовок (Order 3) -->
+                <p class="order-3 text-lg text-gray-600 leading-relaxed border-l-4 border-primary pl-4">
+                    Получите доступ к бесплатному видео, где мы раскрываем реальный путь входа в востребованную профессию мастера окон, доходы, ошибки новичков и стратегию выхода на стабильный заработок.
+                </p>
+
+                <!-- Кнопка (Order 4) -->
+                <div class="order-4 space-y-3 pt-2">
+                    <button onclick="handleRedirect('Hero_Main')" class="w-full md:w-auto text-lg px-8 py-4 bg-primary hover:bg-red-800 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 active:scale-95">
+                        Получить доступ к видео
+                    </button>
+                    <p class="text-xs text-gray-500 flex items-center gap-1 justify-center md:justify-start">
+                        <i data-lucide="check-circle-2" class="w-3 h-3 text-green-500"></i>
+                        Видео откроется сразу после регистрации
+                    </p>
+                </div>
+            </div>
+
+            <!-- Картинка для ДЕСКТОПА - Прямая ссылка -->
+            <div class="hidden md:block relative">
+                <div class="absolute -inset-4 bg-primary/5 rounded-3xl transform rotate-3"></div>
+                <div class="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/3] transform transition hover:-translate-y-1 duration-500">
+                    <img src="https://images.pexels.com/photos/5691503/pexels-photo-5691503.jpeg" 
+                         alt="Мастер за работой" 
+                         class="w-full h-full object-cover">
+                    <!-- Бейдж -->
+                    <div class="absolute bottom-6 left-6 bg-white/95 shadow-lg rounded-xl p-4 flex items-center gap-3 max-w-xs">
+                        <div class="bg-green-100 p-2 rounded-full text-green-600">
+                            <i data-lucide="trending-up" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500 uppercase font-semibold">Спрос на услуги</p>
+                            <p class="font-bold text-secondary">Растет на 15% в год</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Value Proposition -->
+    <section class="py-16 bg-white border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-secondary">Что вы получите в видео?</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Карточки с контентом -->
+                <div class="flex gap-4 p-5 rounded-2xl bg-gray-50 border border-gray-100">
+                    <div class="shrink-0 text-primary"><i data-lucide="trending-up"></i></div>
+                    <p class="text-gray-700 font-medium">Как работает рынок оконного сервиса в Европе и почему спрос растёт.</p>
+                </div>
+                
+                <div class="flex gap-4 p-5 rounded-2xl bg-gray-50 border border-gray-100">
+                    <div class="shrink-0 text-primary"><i data-lucide="briefcase"></i></div>
+                    <p class="text-gray-700 font-medium">Математика доходов мастера: почему 3000€ — реалистичная цифра.</p>
+                </div>
+
+                <div class="flex gap-4 p-5 rounded-2xl bg-gray-50 border border-gray-100">
+                    <div class="shrink-0 text-primary"><i data-lucide="award"></i></div>
+                    <p class="text-gray-700 font-medium">Какие навыки нужны и как их можно получить за 30 дней без опыта.</p>
+                </div>
+
+                <div class="flex gap-4 p-5 rounded-2xl bg-gray-50 border border-gray-100">
+                    <div class="shrink-0 text-primary"><i data-lucide="users"></i></div>
+                    <p class="text-gray-700 font-medium">Где берет заказы мастер окон и как быстро выйти на первые деньги.</p>
+                </div>
+
+                <div class="flex gap-4 p-5 rounded-2xl bg-gray-50 border border-gray-100">
+                    <div class="shrink-0 text-primary"><i data-lucide="alert-triangle"></i></div>
+                    <p class="text-gray-700 font-medium">5 типичных ошибок новичков, которые приводят к потерям и возвратам.</p>
+                </div>
+
+                <div class="flex gap-4 p-5 rounded-2xl bg-gray-50 border border-gray-100">
+                    <div class="shrink-0 text-primary"><i data-lucide="check-circle-2"></i></div>
+                    <p class="text-gray-700 font-medium">Как выбрать обучение, которое действительно даёт навык, а не теорию.</p>
+                </div>
+            </div>
+
+            <div class="mt-10 text-center">
+                <button onclick="handleRedirect('ValueProps_Section')" class="inline-flex items-center justify-center font-semibold rounded-lg px-8 py-3 text-lg bg-primary hover:bg-red-800 text-white shadow-lg active:scale-95 transition-all">
+                    Получить доступ к видео
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Market Facts -->
+    <section class="py-16 bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
+                Почему <span class="text-primary">мастер окон</span> — одна из самых быстрорастущих профессий?
+            </h2>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Факты -->
+                <div class="bg-gray-800 border border-gray-700 p-6 rounded-2xl">
+                    <div class="text-primary mb-3"><i data-lucide="trending-up" class="w-8 h-8"></i></div>
+                    <h3 class="text-xl font-bold mb-2 text-white">Рост установок</h3>
+                    <p class="text-gray-300">Рост количества установок окон и дверей ежегодно.</p>
+                </div>
+
+                <div class="bg-gray-800 border border-gray-700 p-6 rounded-2xl">
+                    <div class="text-primary mb-3"><i data-lucide="users" class="w-8 h-8"></i></div>
+                    <h3 class="text-xl font-bold mb-2 text-white">Дефицит кадров</h3>
+                    <p class="text-gray-300">Острая нехватка сертифицированных мастеров.</p>
+                </div>
+
+                <div class="bg-gray-800 border border-gray-700 p-6 rounded-2xl">
+                    <div class="text-primary mb-3"><i data-lucide="award" class="w-8 h-8"></i></div>
+                    <h3 class="text-xl font-bold mb-2 text-white">Доходность</h3>
+                    <p class="text-gray-300">Высокая маржинальность услуг (от 150-200$).</p>
+                </div>
+
+                <div class="bg-gray-800 border border-gray-700 p-6 rounded-2xl">
+                    <div class="text-primary mb-3"><i data-lucide="briefcase" class="w-8 h-8"></i></div>
+                    <h3 class="text-xl font-bold mb-2 text-white">Свободная ниша</h3>
+                    <p class="text-gray-300">Низкая конкуренция в большинстве городов Европы.</p>
+                </div>
+
+                <div class="bg-gray-800 border border-gray-700 p-6 rounded-2xl">
+                    <div class="text-primary mb-3"><i data-lucide="check-circle-2" class="w-8 h-8"></i></div>
+                    <h3 class="text-xl font-bold mb-2 text-white">Стабильность</h3>
+                    <p class="text-gray-300">Отсутствие сезонности, работа есть круглый год.</p>
+                </div>
+                 
+                 <!-- Карточка CTA -->
+                 <div class="bg-primary p-6 rounded-2xl flex flex-col justify-center items-center text-center">
+                    <p class="text-white font-medium mb-4 text-lg">Узнайте все подробности</p>
+                    <button onclick="handleRedirect('MarketFacts_Card')" class="bg-white text-primary px-6 py-3 rounded-lg font-bold hover:bg-gray-100 transition-colors w-full">
+                      Смотреть сейчас
+                    </button>
+                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us -->
+    <section class="py-16 md:py-24 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto flex flex-col md:grid md:grid-cols-12 gap-12 items-center">
+           <!-- Картинка Команды -->
+           <div class="md:col-span-5 order-2 md:order-1 w-full">
+             <img src="https://images.unsplash.com/photo-1672748341520-6a839e6c05bb" 
+                  alt="Команда SW.LAB" 
+                  class="rounded-2xl shadow-xl w-full object-cover aspect-[3/4]">
+           </div>
+
+           <!-- Контент -->
+           <div class="md:col-span-7 order-1 md:order-2 space-y-6">
+             <div class="inline-block bg-red-50 text-primary px-3 py-1 rounded-full text-sm font-bold tracking-wide">
+               О НАС
+             </div>
+             <h2 class="text-3xl md:text-4xl font-bold text-secondary">
+               Кто подготовил это видео и почему вам стоит слушать нас
+             </h2>
+             
+             <div class="space-y-4 text-gray-600 text-lg">
+               <p class="font-semibold text-secondary">
+                 SW.LAB — единственная в Европе сертифицированная школа мастеров по услугам сервиса окон.
+               </p>
+               <p>
+                 Мы начинали самостоятельно в Польше два года назад и стали лидерами рынка (более 25 000 обслуженных окон).
+               </p>
+               <ul class="space-y-3 mt-4">
+                 <li class="flex items-start gap-3">
+                   <div class="mt-1 text-primary shrink-0"><i data-lucide="trending-up" class="w-5 h-5"></i></div>
+                   <span>Масштабирование от 1 города до 6 стран.</span>
+                 </li>
+                 <li class="flex items-start gap-3">
+                   <div class="mt-1 text-primary shrink-0"><i data-lucide="alert-triangle" class="w-5 h-5"></i></div>
+                   <span>Совершили все возможные ошибки, чтобы передать вам чистую выжимку опыта и готовую бизнес-модель.</span>
+                 </li>
+               </ul>
+             </div>
+           </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50 border-t border-gray-200 py-12">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <span class="font-extrabold text-2xl tracking-tighter text-secondary block mb-6">
+                SW<span class="text-primary">.</span>LAB
+            </span>
+            <div class="max-w-md mx-auto">
+                <button onclick="handleRedirect('Footer_Main')" class="w-full inline-flex items-center justify-center font-semibold rounded-lg px-6 py-4 text-lg bg-primary hover:bg-red-800 text-white shadow-xl active:scale-95 transition-all">
+                    Получить доступ к видео
+                </button>
+            </div>
+            <p class="text-gray-400 mt-8 text-sm">© 2025 Все права защищены</p>
+        </div>
+    </footer>
+
+    <!-- Скрипты -->
+    <script>
+        // Запуск иконок
+        lucide.createIcons();
+
+        // Ссылка на бота
+        const BOT_LINK = "https://t.me/swlab_education_bot?start=69281cb2c52efce874087982";
+
+        // ЛОГИКА ПЕРЕХОДА И ОТСЛЕЖИВАНИЯ
+        function handleRedirect(buttonLocation) {
+            console.log("Клик:", buttonLocation);
+
+            // Отправка в Facebook Pixel
+            if (typeof fbq === 'function') {
+                fbq('track', 'Lead');
+                fbq('trackCustom', 'ButtonPress', { location: buttonLocation });
+            }
+
+            // Переход
+            setTimeout(function() {
+                window.location.href = BOT_LINK;
+            }, 300);
+        }
+    </script>
+</body>
+</html>
