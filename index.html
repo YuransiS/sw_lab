@@ -300,29 +300,54 @@
         </div>
     </footer>
 
-    <!-- Скрипты -->
+<!-- Скрипты -->
     <script>
         // Запуск иконок
         lucide.createIcons();
 
-        // Ссылка на бота
-        const BOT_LINK = "https://t.me/swlab_education_bot?start=69281cb2c52efce874087982";
+        // Базовая ссылка на бота
+        const BASE_BOT_LINK = "https://t.me/swlab_education_bot";
+        const FLOW_ID = "69281cb2c52efce874087982";
 
         // ЛОГИКА ПЕРЕХОДА И ОТСЛЕЖИВАНИЯ
         function handleRedirect(buttonLocation) {
             console.log("Клик:", buttonLocation);
 
-            // Отправка в Facebook Pixel
+            // 1. Отправка в Facebook Pixel
             if (typeof fbq === 'function') {
                 fbq('track', 'Lead');
                 fbq('trackCustom', 'ButtonPress', { location: buttonLocation });
             }
 
-            // Переход
+            // 2. Сборка ссылки с UTM-метками
+            // Берем текущие параметры из адресной строки (например, ?utm_source=fb&utm_medium=cpc)
+            const currentParams = window.location.search;
+            
+            // Формируем финальную ссылку
+            // Сначала ставим наш start параметр с ID воронки
+            let finalLink = `${BASE_BOT_LINK}?start=${FLOW_ID}`;
+
+            // Если в адресной строке есть метки, добавляем их к ссылке бота
+            // Заменяем первый '?' на '&', так как '?' у нас уже есть в start
+            if (currentParams) {
+                finalLink += currentParams.replace('?', '&');
+            }
+
+            // 3. Переход
             setTimeout(function() {
-                window.location.href = BOT_LINK;
+                window.location.href = finalLink;
             }, 300);
         }
+
+        // Логика липкого хедера
+        const header = document.getElementById('main-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                header.classList.add('shadow-md', 'py-3');
+                header.classList.remove('py-5');
+            } else {
+                header.classList.remove('shadow-md', 'py-3');
+                header.classList.add('py-5');
+            }
+        });
     </script>
-</body>
-</html>
