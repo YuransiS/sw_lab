@@ -12,18 +12,24 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Tailwind CSS (Стили) -->
+    <!-- Библиотека анимаций AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        primary: '#B91C1C', // Глубокий красный
-                        secondary: '#1F2937', // Темно-серый
+                        primary: '#B91C1C', 
+                        secondary: '#1F2937', 
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                     }
                 }
             }
@@ -35,10 +41,10 @@
 
     <!-- ========================================== -->
     <!-- 🔥 ЗОНА ДЛЯ ТАРГЕТОЛОГА (ЧАСТЬ 1: SCRIPT) 🔥 -->
-    <!-- Оставляем в HEAD -->
     <!-- ========================================== -->
     <script>
-        // Вставь ID пикселя ниже вместо нулей
+        var PIXEL_ID = '1172183405066008'; // <--- ЗАМЕНИТЬ НА РЕАЛЬНЫЙ ID
+
         !function(f,b,e,v,n,t,s)
         {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
         n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -48,20 +54,21 @@
         s.parentNode.insertBefore(t,s)}(window, document,'script',
         'https://connect.facebook.net/en_US/fbevents.js');
         
-        fbq('init', '1172183405066008'); // <--- ID ПИКСЕЛЯ СЮДА
+        fbq('init', PIXEL_ID); 
         fbq('track', 'PageView');
     </script>
     <!-- ========================================== -->
 
     <style>
         body { font-family: 'Inter', sans-serif; }
+        /* Кастомный стиль для модалки */
+        .modal-open { overflow: hidden; }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-900 antialiased selection:bg-red-100 selection:text-red-900">
 
     <!-- ========================================== -->
     <!-- 🔥 ЗОНА ДЛЯ ТАРГЕТОЛОГА (ЧАСТЬ 2: NOSCRIPT) 🔥 -->
-    <!-- Перенесли в начало BODY, чтобы Vercel не ругался -->
     <!-- ========================================== -->
     <noscript><img height="1" width="1" style="display:none"
         src="https://www.facebook.com/tr?id=1172183405066008&ev=PageView&noscript=1"
@@ -69,7 +76,7 @@
     <!-- ========================================== -->
 
     <!-- Header -->
-    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 bg-white py-4 shadow-sm">
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-40 bg-white/90 backdrop-blur-md py-4 shadow-sm transition-all duration-300" data-aos="fade-down" data-aos-duration="800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 flex justify-between items-center">
             <div class="flex items-center gap-2">
                 <span class="font-extrabold text-2xl tracking-tighter text-secondary">
@@ -77,7 +84,7 @@
                 </span>
             </div>
             
-            <button onclick="handleRedirect('Header_Top')" class="group flex items-center gap-2 text-sm font-semibold text-secondary hover:text-primary transition-colors border-2 border-gray-200 hover:border-primary rounded-full px-4 py-2 cursor-pointer">
+            <button onclick="openModal('Header_Top')" class="group flex items-center gap-2 text-sm font-semibold text-secondary hover:text-primary transition-colors border-2 border-gray-200 hover:border-primary rounded-full px-4 py-2 cursor-pointer active:scale-95 transition-transform">
                 <i data-lucide="play" class="w-4 h-4 fill-current"></i>
                 <span class="hidden sm:inline">Смотреть видео</span>
                 <span class="sm:hidden">Видео</span>
@@ -85,53 +92,49 @@
         </div>
     </header>
 
-    <!-- Отступ для хедера -->
     <div class="h-20"></div>
 
     <!-- Hero Section -->
-    <section id="hero" class="py-8 md:py-20 px-4 sm:px-6 lg:px-8">
+    <section id="hero" class="py-8 md:py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
         <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             <!-- Текст -->
-            <div class="flex flex-col space-y-6">
+            <div class="flex flex-col space-y-6" data-aos="fade-right" data-aos-duration="1000">
                 
-                <!-- Заголовок (Всегда сверху на мобильном) -->
                 <h1 class="order-1 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-secondary">
                     С нуля до мастера окон за 30 дней: как зарабатывать от <span class="text-primary whitespace-nowrap">3000€ в Европе?</span>
                 </h1>
 
-                <!-- Картинка для МОБИЛЬНЫХ (Order 2) - Прямая ссылка -->
-                <div class="order-2 md:hidden rounded-2xl overflow-hidden shadow-lg aspect-video relative">
-                    <img src="https://i.postimg.cc/XvByvFXQ/pexels-photo-5691521.jpg" 
+                <!-- Mobile Image -->
+                <div class="order-2 md:hidden rounded-2xl overflow-hidden shadow-xl aspect-video relative group" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="photo_1.jpeg" 
                          alt="Мастер ремонтирует белое окно" 
-                         class="w-full h-full object-cover">
+                         class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
                 </div>
 
-                <!-- Подзаголовок (Order 3) -->
                 <p class="order-3 text-lg text-gray-600 leading-relaxed border-l-4 border-primary pl-4">
-                    Получите доступ к видео, где мы раскрываем реальный путь входа в востребованную профессию мастера окон, доходы, ошибки новичков и стратегию выхода на стабильный заработок.
+                    Получите доступ к бесплатному видео, где мы раскрываем реальный путь входа в востребованную профессию мастера окон, доходы, ошибки новичков и стратегию выхода на стабильный заработок.
                 </p>
 
-                <!-- Кнопка (Order 4) -->
                 <div class="order-4 space-y-3 pt-2">
-                    <button onclick="handleRedirect('Hero_Main')" class="w-full md:w-auto text-lg px-8 py-4 bg-primary hover:bg-red-800 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 active:scale-95">
+                    <button onclick="openModal('Hero_Main')" class="w-full md:w-auto text-lg px-8 py-4 bg-primary hover:bg-red-800 text-white font-semibold rounded-lg shadow-lg hover:shadow-red-500/30 transition-all duration-300 active:scale-95 animate-pulse-slow hover:animate-none">
                         Получить доступ к видео
                     </button>
                     <p class="text-xs text-gray-500 flex items-center gap-1 justify-center md:justify-start">
-                        <i data-lucide="check-circle-2" class="w-3 h-3 text-green-500"></i>
-                        Видео откроется сразу после регистрации
+                        <i data-lucide="lock" class="w-3 h-3 text-gray-400"></i>
+                        Видео откроется сразу после ввода данных
                     </p>
                 </div>
             </div>
 
-            <!-- Картинка для ДЕСКТОПА - Прямая ссылка -->
-            <div class="hidden md:block relative">
-                <div class="absolute -inset-4 bg-primary/5 rounded-3xl transform rotate-3"></div>
-                <div class="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/3] transform transition hover:-translate-y-1 duration-500">
-                    <img src="https://i.postimg.cc/XvByvFXQ/pexels-photo-5691521.jpg" 
+            <!-- Desktop Image -->
+            <div class="hidden md:block relative" data-aos="fade-left" data-aos-duration="1000">
+                <div class="absolute -inset-4 bg-primary/5 rounded-3xl transform rotate-3 transition-transform hover:rotate-6 duration-500"></div>
+                <div class="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/3] group">
+                    <img src="photo_1.jpeg" 
                          alt="Мастер за работой" 
-                         class="w-full h-full object-cover">
+                         class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
                     <!-- Бейдж -->
-                    <div class="absolute bottom-6 left-6 bg-white/95 shadow-lg rounded-xl p-4 flex items-center gap-3 max-w-xs">
+                    <div class="absolute bottom-6 left-6 bg-white/95 shadow-lg rounded-xl p-4 flex items-center gap-3 max-w-xs backdrop-blur-sm" data-aos="fade-up" data-aos-delay="500">
                         <div class="bg-green-100 p-2 rounded-full text-green-600">
                             <i data-lucide="trending-up" class="w-6 h-6"></i>
                         </div>
@@ -148,45 +151,45 @@
     <!-- Value Proposition -->
     <section class="py-16 bg-white border-t border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
+            <div class="text-center mb-12" data-aos="fade-up">
                 <h2 class="text-3xl md:text-4xl font-bold text-secondary">Что вы получите в видео?</h2>
             </div>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Карточки с контентом -->
-                <div class="flex gap-4 p-5 rounded-2xl bg-gray-50 border border-gray-100">
+                <!-- Карточки (генерируем с задержкой для красоты) -->
+                <div class="flex gap-4 p-5 rounded-2xl bg-gray-50 border border-gray-100 hover:border-red-100 hover:shadow-lg hover:shadow-red-50/50 transition-all duration-300 transform hover:-translate-y-1" data-aos="fade-up" data-aos-delay="0">
                     <div class="shrink-0 text-primary"><i data-lucide="trending-up"></i></div>
                     <p class="text-gray-700 font-medium">Как работает рынок оконного сервиса в Европе и почему спрос растёт.</p>
                 </div>
                 
-                <div class="flex gap-4 p-5 rounded-2xl bg-gray-50 border border-gray-100">
+                <div class="flex gap-4 p-5 rounded-2xl bg-gray-50 border border-gray-100 hover:border-red-100 hover:shadow-lg hover:shadow-red-50/50 transition-all duration-300 transform hover:-translate-y-1" data-aos="fade-up" data-aos-delay="100">
                     <div class="shrink-0 text-primary"><i data-lucide="briefcase"></i></div>
                     <p class="text-gray-700 font-medium">Математика доходов мастера: почему 3000€ — реалистичная цифра.</p>
                 </div>
 
-                <div class="flex gap-4 p-5 rounded-2xl bg-gray-50 border border-gray-100">
+                <div class="flex gap-4 p-5 rounded-2xl bg-gray-50 border border-gray-100 hover:border-red-100 hover:shadow-lg hover:shadow-red-50/50 transition-all duration-300 transform hover:-translate-y-1" data-aos="fade-up" data-aos-delay="200">
                     <div class="shrink-0 text-primary"><i data-lucide="award"></i></div>
                     <p class="text-gray-700 font-medium">Какие навыки нужны и как их можно получить за 30 дней без опыта.</p>
                 </div>
 
-                <div class="flex gap-4 p-5 rounded-2xl bg-gray-50 border border-gray-100">
+                <div class="flex gap-4 p-5 rounded-2xl bg-gray-50 border border-gray-100 hover:border-red-100 hover:shadow-lg hover:shadow-red-50/50 transition-all duration-300 transform hover:-translate-y-1" data-aos="fade-up" data-aos-delay="300">
                     <div class="shrink-0 text-primary"><i data-lucide="users"></i></div>
                     <p class="text-gray-700 font-medium">Где берет заказы мастер окон и как быстро выйти на первые деньги.</p>
                 </div>
 
-                <div class="flex gap-4 p-5 rounded-2xl bg-gray-50 border border-gray-100">
+                <div class="flex gap-4 p-5 rounded-2xl bg-gray-50 border border-gray-100 hover:border-red-100 hover:shadow-lg hover:shadow-red-50/50 transition-all duration-300 transform hover:-translate-y-1" data-aos="fade-up" data-aos-delay="400">
                     <div class="shrink-0 text-primary"><i data-lucide="alert-triangle"></i></div>
                     <p class="text-gray-700 font-medium">5 типичных ошибок новичков, которые приводят к потерям и возвратам.</p>
                 </div>
 
-                <div class="flex gap-4 p-5 rounded-2xl bg-gray-50 border border-gray-100">
+                <div class="flex gap-4 p-5 rounded-2xl bg-gray-50 border border-gray-100 hover:border-red-100 hover:shadow-lg hover:shadow-red-50/50 transition-all duration-300 transform hover:-translate-y-1" data-aos="fade-up" data-aos-delay="500">
                     <div class="shrink-0 text-primary"><i data-lucide="check-circle-2"></i></div>
                     <p class="text-gray-700 font-medium">Как выбрать обучение, которое действительно даёт навык, а не теорию.</p>
                 </div>
             </div>
 
-            <div class="mt-10 text-center">
-                <button onclick="handleRedirect('ValueProps_Section')" class="inline-flex items-center justify-center font-semibold rounded-lg px-8 py-3 text-lg bg-primary hover:bg-red-800 text-white shadow-lg active:scale-95 transition-all">
+            <div class="mt-10 text-center" data-aos="zoom-in">
+                <button onclick="openModal('ValueProps_Section')" class="inline-flex items-center justify-center font-semibold rounded-lg px-8 py-3 text-lg bg-primary hover:bg-red-800 text-white shadow-lg hover:shadow-red-500/30 active:scale-95 transition-all duration-300">
                     Получить доступ к видео
                 </button>
             </div>
@@ -196,47 +199,46 @@
     <!-- Market Facts -->
     <section class="py-16 bg-gray-900 text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12" data-aos="fade-up">
                 Почему <span class="text-primary">мастер окон</span> — одна из самых быстрорастущих профессий?
             </h2>
 
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                
                 <!-- Факты -->
-                <div class="bg-gray-800 border border-gray-700 p-6 rounded-2xl">
+                <div class="bg-gray-800 border border-gray-700 p-6 rounded-2xl hover:bg-gray-750 transition-colors" data-aos="fade-up" data-aos-delay="0">
                     <div class="text-primary mb-3"><i data-lucide="trending-up" class="w-8 h-8"></i></div>
                     <h3 class="text-xl font-bold mb-2 text-white">Рост установок</h3>
                     <p class="text-gray-300">Рост количества установок окон и дверей ежегодно.</p>
                 </div>
 
-                <div class="bg-gray-800 border border-gray-700 p-6 rounded-2xl">
+                <div class="bg-gray-800 border border-gray-700 p-6 rounded-2xl hover:bg-gray-750 transition-colors" data-aos="fade-up" data-aos-delay="100">
                     <div class="text-primary mb-3"><i data-lucide="users" class="w-8 h-8"></i></div>
                     <h3 class="text-xl font-bold mb-2 text-white">Дефицит кадров</h3>
                     <p class="text-gray-300">Острая нехватка сертифицированных мастеров.</p>
                 </div>
 
-                <div class="bg-gray-800 border border-gray-700 p-6 rounded-2xl">
+                <div class="bg-gray-800 border border-gray-700 p-6 rounded-2xl hover:bg-gray-750 transition-colors" data-aos="fade-up" data-aos-delay="200">
                     <div class="text-primary mb-3"><i data-lucide="award" class="w-8 h-8"></i></div>
                     <h3 class="text-xl font-bold mb-2 text-white">Доходность</h3>
                     <p class="text-gray-300">Высокая маржинальность услуг (от 150-200$).</p>
                 </div>
 
-                <div class="bg-gray-800 border border-gray-700 p-6 rounded-2xl">
+                <div class="bg-gray-800 border border-gray-700 p-6 rounded-2xl hover:bg-gray-750 transition-colors" data-aos="fade-up" data-aos-delay="300">
                     <div class="text-primary mb-3"><i data-lucide="briefcase" class="w-8 h-8"></i></div>
                     <h3 class="text-xl font-bold mb-2 text-white">Свободная ниша</h3>
                     <p class="text-gray-300">Низкая конкуренция в большинстве городов Европы.</p>
                 </div>
 
-                <div class="bg-gray-800 border border-gray-700 p-6 rounded-2xl">
+                <div class="bg-gray-800 border border-gray-700 p-6 rounded-2xl hover:bg-gray-750 transition-colors" data-aos="fade-up" data-aos-delay="400">
                     <div class="text-primary mb-3"><i data-lucide="check-circle-2" class="w-8 h-8"></i></div>
                     <h3 class="text-xl font-bold mb-2 text-white">Стабильность</h3>
                     <p class="text-gray-300">Отсутствие сезонности, работа есть круглый год.</p>
                 </div>
                  
                  <!-- Карточка CTA -->
-                 <div class="bg-primary p-6 rounded-2xl flex flex-col justify-center items-center text-center">
+                 <div class="bg-primary p-6 rounded-2xl flex flex-col justify-center items-center text-center transform hover:scale-105 transition-all duration-300 shadow-xl shadow-red-900/20" data-aos="fade-up" data-aos-delay="500">
                     <p class="text-white font-medium mb-4 text-lg">Узнайте все подробности</p>
-                    <button onclick="handleRedirect('MarketFacts_Card')" class="bg-white text-primary px-6 py-3 rounded-lg font-bold hover:bg-gray-100 transition-colors w-full">
+                    <button onclick="openModal('MarketFacts_Card')" class="bg-white text-primary px-6 py-3 rounded-lg font-bold hover:bg-gray-100 transition-colors w-full shadow-md">
                       Смотреть сейчас
                     </button>
                  </div>
@@ -248,14 +250,14 @@
     <section class="py-16 md:py-24 px-4 sm:px-6 lg:px-8">
         <div class="max-w-7xl mx-auto flex flex-col md:grid md:grid-cols-12 gap-12 items-center">
            <!-- Картинка Команды -->
-           <div class="md:col-span-5 order-2 md:order-1 w-full">
-             <img src="https://images.unsplash.com/photo-1672748341520-6a839e6c05bb" 
+           <div class="md:col-span-5 order-2 md:order-1 w-full" data-aos="fade-right">
+             <img src="photo_2.jpeg" 
                   alt="Команда SW.LAB" 
-                  class="rounded-2xl shadow-xl w-full object-cover aspect-[3/4]">
+                  class="rounded-2xl shadow-xl w-full object-cover aspect-[3/4] hover:scale-[1.02] transition-transform duration-500">
            </div>
 
            <!-- Контент -->
-           <div class="md:col-span-7 order-1 md:order-2 space-y-6">
+           <div class="md:col-span-7 order-1 md:order-2 space-y-6" data-aos="fade-left">
              <div class="inline-block bg-red-50 text-primary px-3 py-1 rounded-full text-sm font-bold tracking-wide">
                О НАС
              </div>
@@ -292,7 +294,7 @@
                 SW<span class="text-primary">.</span>LAB
             </span>
             <div class="max-w-md mx-auto">
-                <button onclick="handleRedirect('Footer_Main')" class="w-full inline-flex items-center justify-center font-semibold rounded-lg px-6 py-4 text-lg bg-primary hover:bg-red-800 text-white shadow-xl active:scale-95 transition-all">
+                <button onclick="openModal('Footer_Main')" class="w-full inline-flex items-center justify-center font-semibold rounded-lg px-6 py-4 text-lg bg-primary hover:bg-red-800 text-white shadow-xl active:scale-95 transition-all hover:shadow-red-500/30">
                     Получить доступ к видео
                 </button>
             </div>
@@ -300,54 +302,188 @@
         </div>
     </footer>
 
-<!-- Скрипты -->
+    <!-- ========================================== -->
+    <!-- ⚡ МОДАЛЬНОЕ ОКНО (POPUP) ⚡ -->
+    <!-- ========================================== -->
+    <div id="leadModal" class="fixed inset-0 z-[60] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <!-- Backdrop -->
+        <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity opacity-0" id="modalBackdrop"></div>
+
+        <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+            <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
+                <!-- Modal Panel -->
+                <div class="relative transform overflow-hidden rounded-2xl bg-white text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-md opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" id="modalPanel">
+                    
+                    <!-- Close Button -->
+                    <div class="absolute right-4 top-4">
+                        <button type="button" onclick="closeModal()" class="text-gray-400 hover:text-gray-500 transition-colors">
+                            <i data-lucide="x" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+
+                    <div class="bg-white px-6 pb-8 pt-8 sm:p-8">
+                        <div class="sm:flex sm:items-start">
+                            <div class="mt-3 text-center sm:mt-0 sm:text-left w-full">
+                                <h3 class="text-2xl font-bold leading-6 text-gray-900 mb-2" id="modal-title">Почти готово!</h3>
+                                <p class="text-sm text-gray-500 mb-6">
+                                    Введите свои контакты, чтобы мы закрепили за вами доступ к бесплатному уроку.
+                                </p>
+                                
+                                <!-- Форма -->
+                                <form id="leadForm" class="space-y-4">
+                                    <div>
+                                        <label for="name" class="block text-sm font-medium leading-6 text-gray-900 mb-1">Ваше Имя</label>
+                                        <input type="text" name="name" id="name" required class="block w-full rounded-md border-0 py-3 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6" placeholder="Иван">
+                                    </div>
+                                    <div>
+                                        <label for="phone" class="block text-sm font-medium leading-6 text-gray-900 mb-1">Номер телефона</label>
+                                        <input type="tel" name="phone" id="phone" required class="block w-full rounded-md border-0 py-3 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6" placeholder="+380...">
+                                    </div>
+
+                                    <div class="mt-8">
+                                        <button type="submit" id="submitBtn" class="w-full inline-flex justify-center items-center rounded-lg bg-primary px-3 py-4 text-lg font-semibold text-white shadow-sm hover:bg-red-800 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+                                            <span>Получить видео</span>
+                                            <i data-lucide="arrow-right" class="ml-2 w-5 h-5"></i>
+                                        </button>
+                                    </div>
+                                    <p class="text-xs text-center text-gray-400 mt-3">Ваши данные в безопасности</p>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Скрипты (AOS, Logic) -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Запуск иконок
+        // Инициализация анимаций
+        AOS.init({
+            once: true, // Анимация только один раз при скролле
+            offset: 50,
+        });
+
+        // Инициализация иконок
         lucide.createIcons();
 
-        // Базовая ссылка на бота
+        // КОНФИГУРАЦИЯ
         const BASE_BOT_LINK = "https://t.me/swlab_education_bot";
         const FLOW_ID = "69281cb2c52efce874087982";
+        // 👇 ВСТАВЬ ССЫЛКУ ИЗ GOOGLE APPS SCRIPT НИЖЕ 👇
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyMgNo3qCp0McwbzwpOEwJHioIddKsZ19y1lq-Hy9EEK1wD3E9fGJAxad0JnVcPXWCj/exec";
 
-        // ЛОГИКА ПЕРЕХОДА И ОТСЛЕЖИВАНИЯ
-        function handleRedirect(buttonLocation) {
-            console.log("Клик:", buttonLocation);
+        // Состояние
+        let lastButtonLocation = '';
 
-            // 1. Отправка в Facebook Pixel
+        // --- ЛОГИКА МОДАЛЬНОГО ОКНА ---
+        const modal = document.getElementById('leadModal');
+        const backdrop = document.getElementById('modalBackdrop');
+        const panel = document.getElementById('modalPanel');
+        const body = document.body;
+
+        function openModal(location) {
+            lastButtonLocation = location; // Запоминаем откуда кликнули
+            modal.classList.remove('hidden');
+            body.classList.add('modal-open'); // Блокируем скролл фона
+            
+            // Анимация появления
+            setTimeout(() => {
+                backdrop.classList.remove('opacity-0');
+                panel.classList.remove('opacity-0', 'translate-y-4', 'sm:translate-y-0', 'sm:scale-95');
+                panel.classList.add('translate-y-0', 'scale-100');
+            }, 10);
+        }
+
+        function closeModal() {
+            // Анимация исчезновения
+            backdrop.classList.add('opacity-0');
+            panel.classList.remove('translate-y-0', 'scale-100');
+            panel.classList.add('opacity-0', 'translate-y-4', 'sm:translate-y-0', 'sm:scale-95');
+
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                body.classList.remove('modal-open');
+            }, 300);
+        }
+
+        // Закрытие по клику на фон
+        backdrop.addEventListener('click', closeModal);
+
+        // --- ЛОГИКА ОТПРАВКИ ФОРМЫ ---
+        const form = document.getElementById('leadForm');
+        const submitBtn = document.getElementById('submitBtn');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // UI Loading state
+            const originalBtnContent = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Отправка...';
+
+            // Сбор данных
+            const formData = {
+                name: document.getElementById('name').value,
+                phone: document.getElementById('phone').value,
+                utm: window.location.search || 'no_utm' // Передаем UTM в таблицу
+            };
+
+            // Отправка в Google Sheets
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors', // Важно для Google Scripts
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(() => {
+                // Успешная отправка -> Редирект в бота
+                handleFinalRedirect();
+            })
+            .catch(err => {
+                console.error('Error:', err);
+                // Даже если ошибка записи, все равно редиректим, чтобы не терять лида
+                handleFinalRedirect();
+            });
+        });
+
+
+        function handleFinalRedirect() {
+            // 1. Pixel (Lead) - теперь срабатывает после формы
             if (typeof fbq === 'function') {
-                fbq('track', 'Lead');
-                fbq('trackCustom', 'ButtonPress', { location: buttonLocation });
+                fbq('track', 'Lead'); 
+                fbq('trackCustom', 'FormSubmit', { location: lastButtonLocation });
             }
 
-            // 2. Сборка ссылки с UTM-метками
-            // Берем текущие параметры из адресной строки (например, ?utm_source=fb&utm_medium=cpc)
+            // 2. Формирование ссылки
             const currentParams = window.location.search;
-            
-            // Формируем финальную ссылку
-            // Сначала ставим наш start параметр с ID воронки
             let finalLink = `${BASE_BOT_LINK}?start=${FLOW_ID}`;
 
-            // Если в адресной строке есть метки, добавляем их к ссылке бота
-            // Заменяем первый '?' на '&', так как '?' у нас уже есть в start
             if (currentParams) {
                 finalLink += currentParams.replace('?', '&');
             }
 
             // 3. Переход
-            setTimeout(function() {
-                window.location.href = finalLink;
-            }, 300);
+            window.location.href = finalLink;
         }
 
         // Логика липкого хедера
         const header = document.getElementById('main-header');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 20) {
-                header.classList.add('shadow-md', 'py-3');
-                header.classList.remove('py-5');
+                header.classList.add('shadow-md', 'bg-white/95');
+                header.classList.remove('py-4');
+                header.classList.add('py-3');
             } else {
-                header.classList.remove('shadow-md', 'py-3');
-                header.classList.add('py-5');
+                header.classList.remove('shadow-md', 'bg-white/95');
+                header.classList.add('py-4');
+                header.classList.remove('py-3');
             }
         });
     </script>
+</body>
+</html>
