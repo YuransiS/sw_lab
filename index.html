@@ -43,8 +43,7 @@
     <!-- 🔥 ЗОНА ДЛЯ ТАРГЕТОЛОГА (PIXEL SCRIPT) 🔥 -->
     <!-- ========================================== -->
     <script>
-        // Твой ID пикселя
-        var PIXEL_ID = '1172183405066008';
+        var PIXEL_ID = '1172183405066008'; 
 
         !function(f,b,e,v,n,t,s)
         {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -62,7 +61,6 @@
 
     <style>
         body { font-family: 'Inter', sans-serif; }
-        /* Кастомный стиль для модалки, чтобы блокировать скролл */
         .modal-open { overflow: hidden; }
     </style>
 </head>
@@ -107,9 +105,8 @@
 
                 <!-- Mobile Image -->
                 <div class="order-2 md:hidden rounded-2xl overflow-hidden shadow-xl aspect-video relative group" data-aos="zoom-in" data-aos-delay="200">
-                    <!-- Убедитесь, что папка img лежит рядом с index.html -->
-                    <img src="img/photo_1.jpeg" 
-                         onerror="this.src='https://images.unsplash.com/photo-1604754742629-3e5728249d73?q=80&w=2070&auto=format&fit=crop'"
+                    <!-- ИСПРАВЛЕНО: ./img/photo_1.jpeg -->
+                    <img src="./img/photo_1.jpeg" 
                          alt="Мастер ремонтирует белое окно" 
                          class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
                 </div>
@@ -133,9 +130,8 @@
             <div class="hidden md:block relative" data-aos="fade-left" data-aos-duration="1000">
                 <div class="absolute -inset-4 bg-primary/5 rounded-3xl transform rotate-3 transition-transform hover:rotate-6 duration-500"></div>
                 <div class="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/3] group">
-                    <!-- Убедитесь, что папка img лежит рядом с index.html -->
-                    <img src="img/photo_1.jpeg" 
-                         onerror="this.src='https://images.unsplash.com/photo-1604754742629-3e5728249d73?q=80&w=2070&auto=format&fit=crop'"
+                    <!-- ИСПРАВЛЕНО: ./img/photo_1.jpeg -->
+                    <img src="./img/photo_1.jpeg" 
                          alt="Мастер за работой" 
                          class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
                     <!-- Бейдж -->
@@ -256,9 +252,8 @@
         <div class="max-w-7xl mx-auto flex flex-col md:grid md:grid-cols-12 gap-12 items-center">
            <!-- Картинка Команды -->
            <div class="md:col-span-5 order-2 md:order-1 w-full" data-aos="fade-right">
-             <!-- Убедитесь, что папка img лежит рядом с index.html -->
-             <img src="img/photo_2.jpeg" 
-                  onerror="this.src='https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop'"
+             <!-- ИСПРАВЛЕНО: ./img/photo_2.jpg -->
+             <img src="./img/photo_2.jpg" 
                   alt="Команда SW.LAB" 
                   class="rounded-2xl shadow-xl w-full object-cover aspect-[3/4] hover:scale-[1.02] transition-transform duration-500">
            </div>
@@ -438,7 +433,6 @@
             fetch(GOOGLE_SCRIPT_URL, {
                 method: 'POST',
                 mode: 'no-cors', 
-                // !!! ИСПРАВЛЕНИЕ: Используем text/plain, чтобы браузер не блокировал запрос к Google
                 headers: {
                     'Content-Type': 'text/plain;charset=utf-8'
                 },
