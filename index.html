@@ -40,10 +40,11 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <!-- ========================================== -->
-    <!-- 🔥 ЗОНА ДЛЯ ТАРГЕТОЛОГА (ЧАСТЬ 1: SCRIPT) 🔥 -->
+    <!-- 🔥 ЗОНА ДЛЯ ТАРГЕТОЛОГА (PIXEL SCRIPT) 🔥 -->
     <!-- ========================================== -->
     <script>
-        var PIXEL_ID = '1172183405066008'; // <--- ЗАМЕНИТЬ НА РЕАЛЬНЫЙ ID
+        // Твой ID пикселя
+        var PIXEL_ID = '1172183405066008';
 
         !function(f,b,e,v,n,t,s)
         {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -61,14 +62,14 @@
 
     <style>
         body { font-family: 'Inter', sans-serif; }
-        /* Кастомный стиль для модалки */
+        /* Кастомный стиль для модалки, чтобы блокировать скролл */
         .modal-open { overflow: hidden; }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-900 antialiased selection:bg-red-100 selection:text-red-900">
 
     <!-- ========================================== -->
-    <!-- 🔥 ЗОНА ДЛЯ ТАРГЕТОЛОГА (ЧАСТЬ 2: NOSCRIPT) 🔥 -->
+    <!-- 🔥 ЗОНА ДЛЯ ТАРГЕТОЛОГА (PIXEL NOSCRIPT) 🔥 -->
     <!-- ========================================== -->
     <noscript><img height="1" width="1" style="display:none"
         src="https://www.facebook.com/tr?id=1172183405066008&ev=PageView&noscript=1"
@@ -106,7 +107,9 @@
 
                 <!-- Mobile Image -->
                 <div class="order-2 md:hidden rounded-2xl overflow-hidden shadow-xl aspect-video relative group" data-aos="zoom-in" data-aos-delay="200">
+                    <!-- Убедитесь, что папка img лежит рядом с index.html -->
                     <img src="img/photo_1.jpeg" 
+                         onerror="this.src='https://images.unsplash.com/photo-1604754742629-3e5728249d73?q=80&w=2070&auto=format&fit=crop'"
                          alt="Мастер ремонтирует белое окно" 
                          class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
                 </div>
@@ -130,7 +133,9 @@
             <div class="hidden md:block relative" data-aos="fade-left" data-aos-duration="1000">
                 <div class="absolute -inset-4 bg-primary/5 rounded-3xl transform rotate-3 transition-transform hover:rotate-6 duration-500"></div>
                 <div class="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/3] group">
+                    <!-- Убедитесь, что папка img лежит рядом с index.html -->
                     <img src="img/photo_1.jpeg" 
+                         onerror="this.src='https://images.unsplash.com/photo-1604754742629-3e5728249d73?q=80&w=2070&auto=format&fit=crop'"
                          alt="Мастер за работой" 
                          class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
                     <!-- Бейдж -->
@@ -156,7 +161,7 @@
             </div>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Карточки (генерируем с задержкой для красоты) -->
+                <!-- Карточки -->
                 <div class="flex gap-4 p-5 rounded-2xl bg-gray-50 border border-gray-100 hover:border-red-100 hover:shadow-lg hover:shadow-red-50/50 transition-all duration-300 transform hover:-translate-y-1" data-aos="fade-up" data-aos-delay="0">
                     <div class="shrink-0 text-primary"><i data-lucide="trending-up"></i></div>
                     <p class="text-gray-700 font-medium">Как работает рынок оконного сервиса в Европе и почему спрос растёт.</p>
@@ -251,7 +256,9 @@
         <div class="max-w-7xl mx-auto flex flex-col md:grid md:grid-cols-12 gap-12 items-center">
            <!-- Картинка Команды -->
            <div class="md:col-span-5 order-2 md:order-1 w-full" data-aos="fade-right">
+             <!-- Убедитесь, что папка img лежит рядом с index.html -->
              <img src="img/photo_2.jpeg" 
+                  onerror="this.src='https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop'"
                   alt="Команда SW.LAB" 
                   class="rounded-2xl shadow-xl w-full object-cover aspect-[3/4] hover:scale-[1.02] transition-transform duration-500">
            </div>
@@ -372,7 +379,7 @@
         // КОНФИГУРАЦИЯ
         const BASE_BOT_LINK = "https://t.me/swlab_education_bot";
         const FLOW_ID = "69281cb2c52efce874087982";
-        // 👇 ВСТАВЬ ССЫЛКУ ИЗ GOOGLE APPS SCRIPT НИЖЕ 👇
+        // Ссылка на Google Script (твой URL)
         const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyMgNo3qCp0McwbzwpOEwJHioIddKsZ19y1lq-Hy9EEK1wD3E9fGJAxad0JnVcPXWCj/exec";
 
         // Состояние
@@ -385,11 +392,10 @@
         const body = document.body;
 
         function openModal(location) {
-            lastButtonLocation = location; // Запоминаем откуда кликнули
+            lastButtonLocation = location;
             modal.classList.remove('hidden');
-            body.classList.add('modal-open'); // Блокируем скролл фона
+            body.classList.add('modal-open'); 
             
-            // Анимация появления
             setTimeout(() => {
                 backdrop.classList.remove('opacity-0');
                 panel.classList.remove('opacity-0', 'translate-y-4', 'sm:translate-y-0', 'sm:scale-95');
@@ -398,7 +404,6 @@
         }
 
         function closeModal() {
-            // Анимация исчезновения
             backdrop.classList.add('opacity-0');
             panel.classList.remove('translate-y-0', 'scale-100');
             panel.classList.add('opacity-0', 'translate-y-4', 'sm:translate-y-0', 'sm:scale-95');
@@ -409,7 +414,6 @@
             }, 300);
         }
 
-        // Закрытие по клику на фон
         backdrop.addEventListener('click', closeModal);
 
         // --- ЛОГИКА ОТПРАВКИ ФОРМЫ ---
@@ -420,7 +424,6 @@
             e.preventDefault();
             
             // UI Loading state
-            const originalBtnContent = submitBtn.innerHTML;
             submitBtn.disabled = true;
             submitBtn.innerHTML = '<svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Отправка...';
 
@@ -428,25 +431,24 @@
             const formData = {
                 name: document.getElementById('name').value,
                 phone: document.getElementById('phone').value,
-                utm: window.location.search || 'no_utm' // Передаем UTM в таблицу
+                utm: window.location.search || 'no_utm' 
             };
 
             // Отправка в Google Sheets
             fetch(GOOGLE_SCRIPT_URL, {
                 method: 'POST',
-                mode: 'no-cors', // Важно для Google Scripts
+                mode: 'no-cors', 
+                // !!! ИСПРАВЛЕНИЕ: Используем text/plain, чтобы браузер не блокировал запрос к Google
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'text/plain;charset=utf-8'
                 },
                 body: JSON.stringify(formData)
             })
             .then(() => {
-                // Успешная отправка -> Редирект в бота
                 handleFinalRedirect();
             })
             .catch(err => {
                 console.error('Error:', err);
-                // Даже если ошибка записи, все равно редиректим, чтобы не терять лида
                 handleFinalRedirect();
             });
         });
