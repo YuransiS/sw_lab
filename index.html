@@ -461,7 +461,8 @@
             const formData = {
                 name: document.getElementById('name').value,
                 phone: fullPhoneNumber, // Отправляем полный номер
-                utm: window.location.search || 'no_utm' 
+                utm: window.location.search || 'no_utm',
+                targetSheet: 'Leads Leads Master Okon' 
             };
 
             // Отправка в Google Sheets
