@@ -15,9 +15,6 @@
     <!-- Библиотека анимаций AOS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-    <!-- Библиотека для телефона (Стили) -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/css/intlTelInput.css">
-
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -62,16 +59,21 @@
     </script>
     <!-- ========================================== -->
 
+    <!-- ========================================== -->
+    <!-- 🔥 MICROSOFT CLARITY (HEATMAP) 🔥 -->
+    <!-- ========================================== -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "YOUR_CLARITY_ID_HERE"); 
+        /* ⚠️ ЗАМЕНИТЕ "YOUR_CLARITY_ID_HERE" НА ВАШ ID ИЗ MICROSOFT CLARITY ⚠️ */
+    </script>
+    <!-- ========================================== -->
+
     <style>
         body { font-family: 'Inter', sans-serif; }
-        .modal-open { overflow: hidden; }
-        
-        /* Стили для инпута телефона, чтобы он дружил с Tailwind */
-        .iti { width: 100%; }
-        .iti__flag { background-image: url("https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/img/flags.png"); }
-        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-          .iti__flag { background-image: url("https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/img/flags@2x.png"); }
-        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-900 antialiased selection:bg-red-100 selection:text-red-900">
@@ -93,7 +95,7 @@
                 </span>
             </div>
             
-            <button onclick="openModal('Header_Top')" class="group flex items-center gap-2 text-sm font-semibold text-secondary hover:text-primary transition-colors border-2 border-gray-200 hover:border-primary rounded-full px-4 py-2 cursor-pointer active:scale-95 transition-transform">
+            <button onclick="redirectToBot('Header_Top')" class="group flex items-center gap-2 text-sm font-semibold text-secondary hover:text-primary transition-colors border-2 border-gray-200 hover:border-primary rounded-full px-4 py-2 cursor-pointer active:scale-95 transition-transform">
                 <i data-lucide="play" class="w-4 h-4 fill-current"></i>
                 <span class="hidden sm:inline">Смотреть видео</span>
                 <span class="sm:hidden">Видео</span>
@@ -121,16 +123,17 @@
                 </div>
 
                 <p class="order-3 text-lg text-gray-600 leading-relaxed border-l-4 border-primary pl-4">
-                    Получите доступ к бесплатному видео, где мы раскрываем реальный путь входа в востребованную профессию мастера окон, доходы, ошибки новичков и стратегию выхода на стабильный заработок.
+                    Переходите в Telegram-бот и получите бесплатное видео, где мы раскрываем реальный путь входа в востребованную профессию.
                 </p>
 
                 <div class="order-4 space-y-3 pt-2">
-                    <button onclick="openModal('Hero_Main')" class="w-full md:w-auto text-lg px-8 py-4 bg-primary hover:bg-red-800 text-white font-semibold rounded-lg shadow-lg hover:shadow-red-500/30 transition-all duration-300 active:scale-95 animate-pulse-slow hover:animate-none">
-                        Получить доступ к видео
+                    <button onclick="redirectToBot('Hero_Main')" class="w-full md:w-auto text-lg px-8 py-4 bg-primary hover:bg-red-800 text-white font-semibold rounded-lg shadow-lg hover:shadow-red-500/30 transition-all duration-300 active:scale-95 animate-pulse-slow hover:animate-none flex justify-center items-center gap-2">
+                        <span>Получить доступ в Telegram</span>
+                        <i data-lucide="send" class="w-5 h-5"></i>
                     </button>
                     <p class="text-xs text-gray-500 flex items-center gap-1 justify-center md:justify-start">
-                        <i data-lucide="lock" class="w-3 h-3 text-gray-400"></i>
-                        Видео откроется сразу после ввода данных
+                        <i data-lucide="zap" class="w-3 h-3 text-yellow-500"></i>
+                        Моментальный доступ без ожидания
                     </p>
                 </div>
             </div>
@@ -198,7 +201,7 @@
             </div>
 
             <div class="mt-10 text-center" data-aos="zoom-in">
-                <button onclick="openModal('ValueProps_Section')" class="inline-flex items-center justify-center font-semibold rounded-lg px-8 py-3 text-lg bg-primary hover:bg-red-800 text-white shadow-lg hover:shadow-red-500/30 active:scale-95 transition-all duration-300">
+                <button onclick="redirectToBot('ValueProps_Section')" class="inline-flex items-center justify-center font-semibold rounded-lg px-8 py-3 text-lg bg-primary hover:bg-red-800 text-white shadow-lg hover:shadow-red-500/30 active:scale-95 transition-all duration-300">
                     Получить доступ к видео
                 </button>
             </div>
@@ -247,8 +250,9 @@
                  <!-- Карточка CTA -->
                  <div class="bg-primary p-6 rounded-2xl flex flex-col justify-center items-center text-center transform hover:scale-105 transition-all duration-300 shadow-xl shadow-red-900/20" data-aos="fade-up" data-aos-delay="500">
                     <p class="text-white font-medium mb-4 text-lg">Узнайте все подробности</p>
-                    <button onclick="openModal('MarketFacts_Card')" class="bg-white text-primary px-6 py-3 rounded-lg font-bold hover:bg-gray-100 transition-colors w-full shadow-md">
-                      Смотреть сейчас
+                    <button onclick="redirectToBot('MarketFacts_Card')" class="bg-white text-primary px-6 py-3 rounded-lg font-bold hover:bg-gray-100 transition-colors w-full shadow-md flex justify-center items-center gap-2">
+                        <span>Смотреть сейчас</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
                     </button>
                  </div>
             </div>
@@ -303,203 +307,57 @@
                 SW<span class="text-primary">.</span>LAB
             </span>
             <div class="max-w-md mx-auto">
-                <button onclick="openModal('Footer_Main')" class="w-full inline-flex items-center justify-center font-semibold rounded-lg px-6 py-4 text-lg bg-primary hover:bg-red-800 text-white shadow-xl active:scale-95 transition-all hover:shadow-red-500/30">
-                    Получить доступ к видео
+                <button onclick="redirectToBot('Footer_Main')" class="w-full inline-flex items-center justify-center font-semibold rounded-lg px-6 py-4 text-lg bg-primary hover:bg-red-800 text-white shadow-xl active:scale-95 transition-all hover:shadow-red-500/30 gap-2">
+                    <i data-lucide="send" class="w-5 h-5"></i>
+                    <span>Перейти в Telegram</span>
                 </button>
             </div>
             <p class="text-gray-400 mt-8 text-sm">© 2026 Все права защищены</p>
         </div>
     </footer>
 
-    <!-- ========================================== -->
-    <!-- ⚡ МОДАЛЬНОЕ ОКНО (POPUP) ⚡ -->
-    <!-- ========================================== -->
-    <div id="leadModal" class="fixed inset-0 z-[60] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-        <!-- Backdrop -->
-        <div class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity opacity-0" id="modalBackdrop"></div>
 
-        <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
-            <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
-                <!-- Modal Panel -->
-                <div class="relative transform overflow-hidden rounded-2xl bg-white text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-md opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" id="modalPanel">
-                    
-                    <!-- Close Button -->
-                    <div class="absolute right-4 top-4">
-                        <button type="button" onclick="closeModal()" class="text-gray-400 hover:text-gray-500 transition-colors z-20">
-                            <i data-lucide="x" class="w-6 h-6"></i>
-                        </button>
-                    </div>
-
-                    <div class="bg-white px-6 pb-8 pt-8 sm:p-8">
-                        <div class="sm:flex sm:items-start">
-                            <div class="mt-3 text-center sm:mt-0 sm:text-left w-full">
-                                <h3 class="text-2xl font-bold leading-6 text-gray-900 mb-2" id="modal-title">Почти готово!</h3>
-                                <p class="text-sm text-gray-500 mb-6">
-                                    Введите свои контакты, чтобы мы закрепили за вами доступ к бесплатному уроку.
-                                </p>
-                                
-                                <!-- Форма -->
-                                <form id="leadForm" class="space-y-4">
-                                    <div>
-                                        <label for="name" class="block text-sm font-medium leading-6 text-gray-900 mb-1">Ваше Имя</label>
-                                        <input type="text" name="name" id="name" required class="block w-full rounded-md border-0 py-3 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6" placeholder="Иван">
-                                    </div>
-                                    <div>
-                                        <label for="phone" class="block text-sm font-medium leading-6 text-gray-900 mb-1">Номер телефона</label>
-                                        <!-- Изменен инпут для intl-tel-input -->
-                                        <input type="tel" id="phone" name="phone" required class="block w-full rounded-md border-0 py-3 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6">
-                                    </div>
-
-                                    <div class="mt-8">
-                                        <button type="submit" id="submitBtn" class="w-full inline-flex justify-center items-center rounded-lg bg-primary px-3 py-4 text-lg font-semibold text-white shadow-sm hover:bg-red-800 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
-                                            <span>Получить видео</span>
-                                            <i data-lucide="arrow-right" class="ml-2 w-5 h-5"></i>
-                                        </button>
-                                    </div>
-                                    <p class="text-xs text-center text-gray-400 mt-3">Ваши данные в безопасности</p>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- Скрипты (AOS, Logic, Intl-tel-input) -->
+    <!-- Скрипты (AOS, Logic) -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <!-- Библиотека JS для телефона -->
-    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js"></script>
     <script>
         // Инициализация анимаций
         AOS.init({
-            once: true, // Анимация только один раз при скролле
+            once: true, 
             offset: 50,
         });
 
         // Инициализация иконок
         lucide.createIcons();
 
-        // КОНФИГУРАЦИЯ
+        // КОНФИГУРАЦИЯ БОТА
         const BASE_BOT_LINK = "https://t.me/swlab_education_bot";
         const FLOW_ID = "696764e033387228eb0c7c07";
-        // Ссылка на Google Script (твой URL)
-        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbytM2jE-_R4rcARLQgHKH40wzYxw0la10nFWmFsBqWtMyLg5Q-GscBu2CnkZ_fLJ7wq/exec";
 
-        // --- НАСТРОЙКА ТЕЛЕФОНА (AUTO COUNTRY) ---
-        const input = document.querySelector("#phone");
-        const iti = window.intlTelInput(input, {
-            initialCountry: "auto", // Автоопределение
-            geoIpLookup: function(callback) {
-                // Используем бесплатный API для определения страны
-                fetch("https://ipapi.co/json")
-                    .then(function(res) { return res.json(); })
-                    .then(function(data) { callback(data.country_code); })
-                    .catch(function() { callback("pl"); }); // Если ошибка, по умолчанию Польша
-            },
-            utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js", // Форматирование
-            autoPlaceholder: "aggressive",
-            separateDialCode: true // Показываем код отдельно (+48)
-        });
-
-        // Состояние
-        let lastButtonLocation = '';
-
-        // --- ЛОГИКА МОДАЛЬНОГО ОКНА ---
-        const modal = document.getElementById('leadModal');
-        const backdrop = document.getElementById('modalBackdrop');
-        const panel = document.getElementById('modalPanel');
-        const body = document.body;
-
-        function openModal(location) {
-            lastButtonLocation = location;
-            modal.classList.remove('hidden');
-            body.classList.add('modal-open'); 
+        // --- ФУНКЦИЯ ПРЯМОГО ПЕРЕХОДА В БОТ ---
+        function redirectToBot(locationName) {
             
-            setTimeout(() => {
-                backdrop.classList.remove('opacity-0');
-                panel.classList.remove('opacity-0', 'translate-y-4', 'sm:translate-y-0', 'sm:scale-95');
-                panel.classList.add('translate-y-0', 'scale-100');
-            }, 10);
-        }
-
-        function closeModal() {
-            backdrop.classList.add('opacity-0');
-            panel.classList.remove('translate-y-0', 'scale-100');
-            panel.classList.add('opacity-0', 'translate-y-4', 'sm:translate-y-0', 'sm:scale-95');
-
-            setTimeout(() => {
-                modal.classList.add('hidden');
-                body.classList.remove('modal-open');
-            }, 300);
-        }
-
-        backdrop.addEventListener('click', closeModal);
-
-        // --- ЛОГИКА ОТПРАВКИ ФОРМЫ ---
-        const form = document.getElementById('leadForm');
-        const submitBtn = document.getElementById('submitBtn');
-
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Проверка валидности номера (опционально, но полезно)
-            if (!iti.isValidNumber()) {
-                alert("Пожалуйста, введите корректный номер телефона");
-                return;
-            }
-
-            // UI Loading state
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Отправка...';
-
-            // Получаем ПОЛНЫЙ номер с кодом страны (+48...)
-            const fullPhoneNumber = iti.getNumber();
-
-            // Сбор данных
-            const formData = {
-                name: document.getElementById('name').value,
-                phone: fullPhoneNumber, // Отправляем полный номер
-                utm: window.location.search || 'no_utm',
-                targetSheet: 'Leads Master Okon' 
-            };
-
-            // Отправка в Google Sheets
-            fetch(GOOGLE_SCRIPT_URL, {
-                method: 'POST',
-                mode: 'no-cors', 
-                headers: {
-                    'Content-Type': 'text/plain;charset=utf-8'
-                },
-                body: JSON.stringify(formData)
-            })
-            .then(() => {
-                handleFinalRedirect();
-            })
-            .catch(err => {
-                console.error('Error:', err);
-                handleFinalRedirect();
-            });
-        });
-
-
-        function handleFinalRedirect() {
-            // 1. Pixel (Lead) - теперь срабатывает после формы
+            // 1. Отправляем событие в Pixel (Lead) перед уходом
             if (typeof fbq === 'function') {
                 fbq('track', 'Lead'); 
-                fbq('trackCustom', 'FormSubmit', { location: lastButtonLocation });
+                fbq('trackCustom', 'BotRedirect', { source: locationName });
             }
 
-            // 2. Формирование ссылки
-            const currentParams = window.location.search;
+            // 2. Собираем ссылку с UTM-метками
+            // Базовая ссылка с командой start
             let finalLink = `${BASE_BOT_LINK}?start=${FLOW_ID}`;
 
+            // Если есть параметры в URL текущей страницы (utm_source и т.д.), добавляем их
+            const currentParams = window.location.search;
             if (currentParams) {
+                // Telegram принимает параметры после start через & (если использовать Web App)
+                // Но для обычных диплинков параметры часто теряются. 
+                // Стандартный способ проброса в конструкторы ботов: добавляем их к строке.
+                
+                // Заменяем ? на &, так как ? уже есть после названия бота
                 finalLink += currentParams.replace('?', '&');
             }
 
-            // 3. Переход
+            // 3. Перенаправляем пользователя
             window.location.href = finalLink;
         }
 
